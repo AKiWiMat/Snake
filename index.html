@@ -41,6 +41,8 @@
             }
         }
 
+        let startX, startY, endX, endY;
+
         function handleTouchStart(event) {
             event.preventDefault();
             startX = event.touches[0].clientX;
@@ -111,4 +113,17 @@
 
             let newHead = { x: snakeX, y: snakeY };
 
-            for (let i = 1; i <
+            for (let i = 1; i < snake.length; i++) {
+                if (snake[i].x === newHead.x && snake[i].y === newHead.y) {
+                    clearInterval(game);
+                    alert('Game Over');
+                }
+            }
+
+            snake.unshift(newHead);
+        }
+
+        let game = setInterval(draw, 100);
+    </script>
+</body>
+</html>
